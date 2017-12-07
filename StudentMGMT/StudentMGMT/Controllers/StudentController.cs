@@ -13,7 +13,8 @@ namespace StudentMGMT.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View();
+            List<StudentModel> list = db.Students.ToList();
+            return View(list);
         }
 
         // GET: Student/Details/5
@@ -49,7 +50,7 @@ namespace StudentMGMT.Controllers
         // GET: Student/Edit/5
         public ActionResult Edit(int id)
         {
-            List<StudentModel> list = db.Students.Where(s => s.Id == id).ToList();
+            StudentModel list = db.Students.Where(s => s.Id == id).SingleOrDefault();
             return View(list);
         }
 
@@ -72,7 +73,7 @@ namespace StudentMGMT.Controllers
         // GET: Student/Delete/5
         public ActionResult Delete(int id)
         {
-            List<StudentModel> list = db.Students.Where(s => s.Id == id).ToList();
+            StudentModel list = db.Students.Where(s => s.Id == id).SingleOrDefault();
             return View(list);
         }
 
